@@ -1,7 +1,7 @@
 # Dockerfile - CentOS 7
 # https://github.com/openresty/docker-openresty
 
-FROM centos:7
+FROM registry.dataos.io/docker_openfalcon/centos:centos7.2.1511
 
 MAINTAINER Evan Wies <evan@neomantra.net>
 
