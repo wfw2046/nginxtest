@@ -50,7 +50,7 @@ ARG _RESTY_CONFIG_DEPS="--with-openssl=/tmp/openssl-${RESTY_OPENSSL_VERSION} --w
 # 2) Download and untar OpenSSL, PCRE, and OpenResty
 # 3) Build OpenResty
 # 4) Cleanup
-
+ADD monitor.sh /tmp/monitor.sh
 RUN \
     yum install -y \
         gcc \
@@ -96,6 +96,6 @@ RUN \
     && yum clean all \
     && ln -sf /dev/stdout /usr/local/openresty/nginx/logs/access.log \
     && ln -sf /dev/stderr /usr/local/openresty/nginx/logs/error.log \
-ADD monitor.sh /tmp/monitor.sh
+    && chmod 755 /tmp/monitor.sh
 
 ENTRYPOINT ["/usr/local/openresty/bin/openresty", "-g", "daemon off;"]
